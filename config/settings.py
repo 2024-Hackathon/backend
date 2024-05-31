@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,7 +41,8 @@ INSTALLED_APPS = [
     'documents',
     'quiz',
     'question',
-    'answer'
+    'answer',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -79,9 +81,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'team4',  # 위의 MySQL 컨테이너에서 설정한 MYSQL_DATABASE와 일치해야 함
+            'USER': 'user',   # 위의 MySQL 컨테이너에서 설정한 DATABASE_USER와 일치해야 함
+            'PASSWORD': '1234',   # 위의 MySQL 컨테이너에서 설정한 DATABASE_PASSWORD와 일치해야 함
+            'HOST': 'localhost',    # MySQL 컨테이너가 로컬 호스트에 실행 중이므로 localhost로 설정
+            'PORT': '3306',         # MySQL의 기본 포트인 3306을 사용할 것임
+        }
 }
 
 
