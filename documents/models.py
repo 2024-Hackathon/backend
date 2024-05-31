@@ -1,3 +1,9 @@
 from django.db import models
 
-# Create your models here.
+class Document(models.Model):
+    document_name = models.CharField(max_length=255)
+    document_path = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.document_name
